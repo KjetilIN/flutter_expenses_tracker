@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expenses_tracker/transaction.dart';
 
+import 'package:intl/intl.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -54,18 +56,38 @@ class MyHomePage extends StatelessWidget {
           Column(
             children: transactions.map((tx) {
               return Card(
-                  child: Row( children: [
-                    Container(
+                  child: Row(
+                children: [
+                  Container(
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black, width: 2)
+                          border: Border.all(color: Colors.purple, width: 2)),
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      child: Text(
+                        "\$${tx.amount}",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple),
+                      )),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        tx.title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
-                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      child: Text(tx.amount.toString())),
-                    Column(
-                      children: [Text(tx.title), Text(tx.date.toString())],
-                    ),
-                  ],
+                      Text(
+                        DateFormat.yMMMd().format(tx.date),
+                        style: TextStyle(color: Colors.grey, fontSize: 13),
+                      ),
+                    ],
+                  ),
+                ],
               ));
             }).toList(),
           )
