@@ -29,12 +29,6 @@ class MyHomePage extends StatelessWidget {
       amount: 12,
       date: DateTime.now(),
     ),
-    Transaction(
-      id: "wdg2",
-      title: "Jacket",
-      amount: 13,
-      date: DateTime.now(),
-    ),
   ];
 
   @override
@@ -44,7 +38,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Card(
             child: Container(
@@ -52,6 +46,28 @@ class MyHomePage extends StatelessWidget {
               width: double.infinity,
             ),
             elevation: 5,
+          ),
+          Card(
+            child: Container(
+              margin: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: "Title"),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: "Amount"),
+                  ),
+                  FlatButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Add transaction",
+                        style: TextStyle(color: Colors.purple),
+                      ))
+                ],
+              ),
+            ),
           ),
           Column(
             children: transactions.map((tx) {
