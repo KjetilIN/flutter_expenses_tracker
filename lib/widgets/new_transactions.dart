@@ -12,6 +12,7 @@ class NewTransaction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 5,
       child: Container(
         margin: EdgeInsets.all(10),
         child: Column(
