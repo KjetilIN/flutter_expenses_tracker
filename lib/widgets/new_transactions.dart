@@ -55,7 +55,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 onPressed: submitData,
                 child: Text(
                   "Add transaction",
-                  style: TextStyle(color: Colors.purple),
+                  style: TextStyle(color: Theme.of(context).primaryColor),
                 ))
           ],
         ),
